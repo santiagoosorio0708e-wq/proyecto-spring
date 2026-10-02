@@ -162,7 +162,7 @@ mvn test
 
 ## 📫 Contacto <a name="contacto"></a>
 
-**Desarrollador Principal:** [Tu Nombre / Santiago Osorio]  
+**Desarrollador Principal:** Santiago Osorio  
 **GitHub:** [@santiagoosorio0708e-wq](https://github.com/santiagoosorio0708e-wq)  
 **Link del Proyecto:** [Proyecto Spring](https://github.com/santiagoosorio0708e-wq/proyecto-spring)
 
