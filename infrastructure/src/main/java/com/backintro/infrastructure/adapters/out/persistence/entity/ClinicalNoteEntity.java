@@ -8,34 +8,40 @@ import java.time.LocalDate;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "chat_conversations")
+@Table(name = "clinical_notes")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ChatConversationEntity {
+public class ClinicalNoteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "conversation_status_id")
-    private UUID conversationStatusId;
+    @Column(name = "encounter_id")
+    private UUID encounterId;
 
-    @Column(name = "priority_id")
-    private UUID priorityId;
+    @Column(name = "professional_id")
+    private UUID professionalId;
 
-    @Column(name = "last_message_at")
-    private LocalDateTime lastMessageAt;
+    @Column(name = "subjective", columnDefinition = "TEXT")
+    private String subjective;
 
-    @Column(name = "closed")
-    private Boolean closed;
+    @Column(name = "objective", columnDefinition = "TEXT")
+    private String objective;
 
-    @Column(name = "closed_at")
-    private LocalDateTime closedAt;
+    @Column(name = "assessment", columnDefinition = "TEXT")
+    private String assessment;
 
-    @Column(name = "closed_by")
-    private UUID closedBy;
+    @Column(name = "plan", columnDefinition = "TEXT")
+    private String plan;
+
+    @Column(name = "additional_notes", columnDefinition = "TEXT")
+    private String additionalNotes;
+
+    @Column(name = "signed_at")
+    private LocalDateTime signedAt;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

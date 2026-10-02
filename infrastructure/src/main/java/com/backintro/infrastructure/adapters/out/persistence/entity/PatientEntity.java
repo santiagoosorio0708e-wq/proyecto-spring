@@ -3,9 +3,9 @@ package com.backintro.infrastructure.adapters.out.persistence.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.UUID;
-import java.util.List;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "patients")
@@ -15,46 +15,63 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class PatientEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id", updatable = false, nullable = false)
-    private UUID userId;
+    private UUID id;
 
-    @Column(name = "first_name", nullable = false, length = 50)
+    @Column(name = "document_type_id")
+    private UUID documentTypeId;
+
+    @Column(name = "document_number")
+    private String documentNumber;
+
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 50)
+    @Column(name = "middle_name")
+    private String middleName;
+
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "date_of_birth")
-    private LocalDate dateOfBirth;
+    @Column(name = "second_last_name")
+    private String secondLastName;
 
-    @Column(length = 1)
-    private String gender;
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
-    @Column(name = "blood_type", length = 5)
-    private String bloodType;
+    @Column(name = "biological_sex_id")
+    private UUID biologicalSexId;
 
-    @Column(name = "national_id", length = 20, unique = true)
-    private String nationalId;
+    @Column(name = "gender_identity")
+    private UUID genderIdentity;
 
-    @Column(length = 20)
+    @Column(name = "email", unique = true)
+    private String email;
+
+    @Column(name = "phone")
     private String phone;
 
-    @Column(length = 100, unique = true)
-    private String email;
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "active")
+    private Boolean active;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
+    @Column(name = "created_by")
+    private UUID createdBy;
+
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    // 4.3.2.1 Relación OneToMany Bidireccional
-    // Un paciente puede tener muchos tratamientos.
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TreatmentEntity> treatments;
+    @Column(name = "updated_by")
+    private UUID updatedBy;
+
+    @Column(name = "city_id")
+    private UUID cityId;
 
     @PrePersist
     protected void onCreate() {

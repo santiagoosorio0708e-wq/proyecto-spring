@@ -8,34 +8,25 @@ import java.time.LocalDate;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "chat_conversations")
+@Table(name = "email_contacts")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ChatConversationEntity {
+public class EmailContactEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "conversation_status_id")
-    private UUID conversationStatusId;
+    @Column(name = "contact_id")
+    private UUID contactId;
 
-    @Column(name = "priority_id")
-    private UUID priorityId;
+    @Column(name = "email", unique = true)
+    private String email;
 
-    @Column(name = "last_message_at")
-    private LocalDateTime lastMessageAt;
-
-    @Column(name = "closed")
-    private Boolean closed;
-
-    @Column(name = "closed_at")
-    private LocalDateTime closedAt;
-
-    @Column(name = "closed_by")
-    private UUID closedBy;
+    @Column(name = "notes", columnDefinition = "TEXT")
+    private String notes;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

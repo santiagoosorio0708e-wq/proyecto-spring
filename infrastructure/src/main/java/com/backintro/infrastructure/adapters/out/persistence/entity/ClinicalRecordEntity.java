@@ -8,49 +8,44 @@ import java.time.LocalDate;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "chat_conversations")
+@Table(name = "clinical_records")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ChatConversationEntity {
+public class ClinicalRecordEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "conversation_status_id")
-    private UUID conversationStatusId;
+    @Column(name = "patient_id")
+    private UUID patientId;
 
-    @Column(name = "priority_id")
-    private UUID priorityId;
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
 
-    @Column(name = "last_message_at")
-    private LocalDateTime lastMessageAt;
+    @Column(name = "record_number")
+    private String recordNumber;
 
-    @Column(name = "closed")
-    private Boolean closed;
+    @Column(name = "opened_at")
+    private LocalDateTime openedAt;
 
     @Column(name = "closed_at")
     private LocalDateTime closedAt;
 
-    @Column(name = "closed_by")
-    private UUID closedBy;
+    @Column(name = "status_id")
+    private UUID statusId;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @Column(name = "created_by")
+    private UUID createdBy;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
     }
 
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }
